@@ -132,12 +132,12 @@ export const userRegistrationSchema = Joi.object({
     .min(2)
     .max(100)
     .required()
-    .pattern(/^[a-zA-Z\s]+$/)
+    .pattern(/^[a-zA-Z\s.]+$/)
     .messages({
       'string.empty': 'Student name is required',
       'string.min': 'Student name must be at least 2 characters',
       'string.max': 'Student name cannot exceed 100 characters',
-      'string.pattern.base': 'Student name must contain only letters and spaces',
+      'string.pattern.base': 'Student name must contain only letters, spaces, and periods',
       'any.required': 'Student name is required'
     }),
   
@@ -186,12 +186,12 @@ export const profileUpdateSchema = Joi.object({
     .min(2)
     .max(100)
     .required()
-    .pattern(/^[a-zA-Z\s]+$/)
+    .pattern(/^[a-zA-Z\s.]+$/)
     .messages({
       'string.empty': 'Student name is required',
       'string.min': 'Student name must be at least 2 characters',
       'string.max': 'Student name cannot exceed 100 characters',
-      'string.pattern.base': 'Student name must contain only letters and spaces',
+      'string.pattern.base': 'Student name must contain only letters, spaces, and periods',
       'any.required': 'Student name is required'
     })
 });
