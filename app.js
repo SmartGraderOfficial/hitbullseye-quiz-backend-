@@ -30,7 +30,8 @@ const corsOptions = {
     const devOrigins = [
       'http://localhost:3000',
       'http://127.0.0.1:3000',
-      'https://onlinetest.hitbullseye.com'
+      'https://onlinetest.hitbullseye.com',
+      'chrome-extension://lffeoepmjmajckhejndghjfefpnilgog'  // User's extension ID
     ];
 
     const allowedOrigins = process.env.NODE_ENV === 'production'
@@ -43,6 +44,7 @@ const corsOptions = {
         (origin && origin.startsWith('chrome-extension://'))) {
       callback(null, true); // Allow the request
     } else {
+      console.log(`CORS blocked origin: ${origin}`);
       callback(new Error(`CORS not allowed for origin: ${origin}`));
     }
   },
