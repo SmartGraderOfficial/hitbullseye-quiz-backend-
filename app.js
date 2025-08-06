@@ -30,17 +30,17 @@ const corsOptions = {
     const devOrigins = [
       'http://localhost:3000',
       'http://127.0.0.1:3000',
-      'chrome-extension://iiogdjfegnjaihggnbpnjpdhoacddoki',
-      'chrome-extension://kcekjnopkegaanhopienajafabfeclml',
-      'https://onlinetest.hitbullseye.com',
-      'chrome-extension://nkbikglkebaogophgdehhdcgckgiaadl'
+      'https://onlinetest.hitbullseye.com'
     ];
 
     const allowedOrigins = process.env.NODE_ENV === 'production'
       ? (process.env.ALLOWED_ORIGINS?.split(',') || [])
       : devOrigins;
 
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Allow all Chrome extensions or specific origins
+    if (!origin || 
+        allowedOrigins.includes(origin) || 
+        (origin && origin.startsWith('chrome-extension://'))) {
       callback(null, true); // Allow the request
     } else {
       callback(new Error(`CORS not allowed for origin: ${origin}`));
